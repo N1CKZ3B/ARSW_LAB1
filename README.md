@@ -3,7 +3,9 @@
 ### Arquitecturas de Software - ARSW
 ## Ejercicio Introducción al paralelismo - Hilos - Caso BlackListSearch
 
-### Realizado por: Nicolas Sebastian Achuri Macias y Ricardo Andres Villamizar Mendez
+-----------------------------------------------------------------------------------------
+#### Realizado por: Nicolas Sebastian Achuri Macias y Ricardo Andres Villamizar Mendez
+---------------------------------------------------------------------------------------
 
 ### Dependencias:
 ####   Lecturas:
@@ -35,6 +37,8 @@
 
     	&emsp;&emsp;&emsp;![](img/startrun.png)
     	&emsp;&emsp;&emsp;![](img/resultadorun.png)
+
+--------------------------------
 <div align="justify">
  La diferencia en principio es vista como la concurrencia desde la salida con run es completamente evidente, cada hilo corre independientemente y hace el debido conteo haciendo que los outputs se vean combinados a pesar de su ya dicha "independencia", en la salida con el uso de run(), obtenemos que no hay concurrencia alguna, teniendo en cuenta que estamos pidiendo que cada hilo corra hasta que el otro termine, siendo esto mismo estipulado por el metodo run que estamos haciendo que ejecute cada uno de estos nuevos hilos.
 </div>
@@ -85,7 +89,11 @@ Se implementa la clase MaliciousHostCounter, en este caso se hace uso de la loic
 
 	![](img/ModClaseHostBlackList.png)
 
- 	
+	---------------------------------------
+   	<div align="justify">
+ 	Se modifica la clase al requerir un atributo más que será de ayuda para partir al LinkedList y de esa manera crear unos nuevos que puedan ser verificados de manera concurrente, adjunto a  ello se justifican y se implementan las posiblidades de poder contabilizar los host maliciosos, almacenandolos tambien en una LinkedList que puede ser de ayuda para poder encontrarlos facilmente
+	</div>
+
 
 	* Se sabe que el HOST 202.24.34.55 está reportado en listas negras de una forma más dispersa, y que el host 212.24.24.55 NO está en ninguna lista negra.
 
