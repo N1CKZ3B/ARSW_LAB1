@@ -94,7 +94,7 @@ Para 'refactorizar' este código, y hacer que explote la capacidad multi-núcleo
  	Se modifica la clase al requerir un atributo más que será de ayuda para partir al LinkedList y de esa manera crear unos nuevos que puedan ser verificados de manera concurrente, adjunto a  ello se justifican y se implementan las posiblidades de poder contabilizar los host maliciosos, almacenandolos tambien en una LinkedList que puede ser de ayuda para poder encontrarlos facilmente
 	</div>
   
-  ------------
+  	------------
 
 	* Se sabe que el HOST 202.24.34.55 está reportado en listas negras de una forma más dispersa, y que el host 212.24.24.55 NO está en ninguna lista negra.
 
