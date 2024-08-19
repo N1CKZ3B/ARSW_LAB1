@@ -93,7 +93,8 @@ Para 'refactorizar' este código, y hacer que explote la capacidad multi-núcleo
    	<div align="justify">
  	Se modifica la clase al requerir un atributo más que será de ayuda para partir al LinkedList y de esa manera crear unos nuevos que puedan ser verificados de manera concurrente, adjunto a  ello se justifican y se implementan las posiblidades de poder contabilizar los host maliciosos, almacenandolos tambien en una LinkedList que puede ser de ayuda para poder encontrarlos facilmente
 	</div>
-
+  
+  ------------
 
 	* Se sabe que el HOST 202.24.34.55 está reportado en listas negras de una forma más dispersa, y que el host 212.24.24.55 NO está en ninguna lista negra.
 
@@ -101,6 +102,11 @@ Para 'refactorizar' este código, y hacer que explote la capacidad multi-núcleo
 **Parte II.I Para discutir la próxima clase (NO para implementar aún)**
 
 La estrategia de paralelismo antes implementada es ineficiente en ciertos casos, pues la búsqueda se sigue realizando aún cuando los N hilos (en su conjunto) ya hayan encontrado el número mínimo de ocurrencias requeridas para reportar al servidor como malicioso. Cómo se podría modificar la implementación para minimizar el número de consultas en estos casos?, qué elemento nuevo traería esto al problema?
+
+-----------
+<div align="justify">
+  Se podría dar una verificación  durante los métodos run de cada uno de los hilos, en el que al llegar a cierto punto se podría interrumpir la ejecución, teniendo en cuenta que a partir de ese punto es inútil el seguir haciendo el conteo de hosts maliciosos, dado que la condición que se requiere para considerarlo no confiable en una búsqueda dispersa ya se cumple y la respuesta es completamente evidente. Esta implementación requeriría el agregar y extender el método de RUN y su dependencia directa con la clase de MaliciousHostCounter para realizar debidamente las acciones
+</div>
 
 **Parte III - Evaluación de Desempeño**
 
