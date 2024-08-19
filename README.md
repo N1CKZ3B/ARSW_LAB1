@@ -40,7 +40,7 @@
 
 --------------------------------
 <div align="justify">
- La diferencia en principio es vista como la concurrencia desde la salida con run es completamente evidente, cada hilo corre independientemente y hace el debido conteo haciendo que los outputs se vean combinados a pesar de su ya dicha "independencia", en la salida con el uso de run(), obtenemos que no hay concurrencia alguna, teniendo en cuenta que estamos pidiendo que cada hilo corra hasta que el otro termine, siendo esto mismo estipulado por el metodo run que estamos haciendo que ejecute cada uno de estos nuevos hilos.
+ La diferencia en principio es vista como la concurrencia desde la salida con run la cual es completamente evidente, cada hilo corre independientemente y hace el debido conteo haciendo que los outputs se vean combinados a pesar de su ya dicha "independencia", en la salida con el uso de start(), obtenemos que no hay concurrencia alguna, teniendo en cuenta que estamos pidiendo que cada hilo comience desde el momento que otro termine, siendo esto mismo estipulado por el metodo que estamos haciendo que sea ejecutado por cada uno de estos nuevos hilos.
 </div>
 
 
@@ -77,7 +77,7 @@ Para 'refactorizar' este código, y hacer que explote la capacidad multi-núcleo
 
 ------------------------------------------
 <div align="justify">
-Se implementa la clase MaliciousHostCounter, en este caso se hace uso de la loica que se requiere para encontrar la cantidad de ocurrencias de servidores maliciosos usando el método de IsInBlackListServer y asi determinarlos y agregarlos a una LinkedList que va a determinar las ocurrencias y sus debidas posiciones, en este caso solo se va a ser un conteo a la cantidad de encontrados, teniendo que podira verificarse la longitud de la LinkedList previamente creada.
+  Se implementa la clase MaliciousHostCounter, en este caso se hace uso de la lógica que se requiere para encontrar la cantidad de ocurrencias de servidores maliciosos usando el método de IsInBlackListServer y asi determinarlos y agregarlos a una LinkedList que va a determinar las ocurrencias y sus debidas posiciones, en este caso solo se va a hacer un conteo a la cantidad de encontrados, teniendo que podira verificarse la longitud de la LinkedList previamente creada.
 </div>
 
 -------------------------------------------
