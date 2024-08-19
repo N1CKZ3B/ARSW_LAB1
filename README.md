@@ -3,6 +3,7 @@
 ### Arquitecturas de Software - ARSW
 ## Ejercicio Introducción al paralelismo - Hilos - Caso BlackListSearch
 
+### Realizado por: Nicolas Sebastian Achuri Macias y Ricardo Andres Villamizar Mendez
 
 ### Dependencias:
 ####   Lecturas:
@@ -16,12 +17,30 @@
 **Parte I - Introducción a Hilos en Java**
 
 1. De acuerdo con lo revisado en las lecturas, complete las clases CountThread, para que las mismas definan el ciclo de vida de un hilo que imprima por pantalla los números entre A y B.
+
+&emsp;&emsp;&emsp;![](img/CountThread.png)
+
 2. Complete el método __main__ de la clase CountMainThreads para que:
 	1. Cree 3 hilos de tipo CountThread, asignándole al primero el intervalo [0..99], al segundo [99..199], y al tercero [200..299].
+
+    	&emsp;&emsp;&emsp;![](img/3Hilos.png)
+    
 	2. Inicie los tres hilos con 'start()'.
-	3. Ejecute y revise la salida por pantalla. 
+    
+	3. Ejecute y revise la salida por pantalla.
+
+	&emsp;&emsp;&emsp;![](img/salida1.png)
+
 	4. Cambie el incio con 'start()' por 'run()'. Cómo cambia la salida?, por qué?.
 
+    	&emsp;&emsp;&emsp;![](img/startrun.png)
+    	&emsp;&emsp;&emsp;![](img/resultadorun.png)
+<div align="justify">
+ La diferencia en principio es vista como la concurrencia desde la salida con run es completamente evidente, cada hilo corre independientemente y hace el debido conteo haciendo que los outputs se vean combinados a pesar de su ya dicha "independencia", en la salida con el uso de run(), obtenemos que no hay concurrencia alguna, teniendo en cuenta que estamos pidiendo que cada hilo corra hasta que el otro termine, siendo esto mismo estipulado por el metodo run que estamos haciendo que ejecute cada uno de estos nuevos hilos.
+</div>
+
+
+------------------------------------------------------------------------
 **Parte II - Ejercicio Black List Search**
 
 
