@@ -108,15 +108,31 @@ La estrategia de paralelismo antes implementada es ineficiente en ciertos casos,
   Se podría dar una verificación  durante los métodos run de cada uno de los hilos, en el que al llegar a cierto punto se podría interrumpir la ejecución, teniendo en cuenta que a partir de ese punto es inútil el seguir haciendo el conteo de hosts maliciosos, dado que la condición que se requiere para considerarlo no confiable en una búsqueda dispersa ya se cumple y la respuesta es completamente evidente. Esta implementación requeriría el agregar y extender el método de RUN y su dependencia directa con la clase de MaliciousHostCounter para realizar debidamente las acciones
 </div>
 
+------------------------------------------------------
+
 **Parte III - Evaluación de Desempeño**
 
 A partir de lo anterior, implemente la siguiente secuencia de experimentos para realizar las validación de direcciones IP dispersas (por ejemplo 202.24.34.55), tomando los tiempos de ejecución de los mismos (asegúrese de hacerlos en la misma máquina):
 
 1. Un solo hilo.
+
+   ![image](https://github.com/user-attachments/assets/97d2c14c-84e9-4116-934f-1f3af6855232)
+
 2. Tantos hilos como núcleos de procesamiento (haga que el programa determine esto haciendo uso del [API Runtime](https://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html)).
+
+   ![image](https://github.com/user-attachments/assets/dd481390-c8e9-4aed-882a-76a004d191b9)
+
+   ![image](https://github.com/user-attachments/assets/aa372e54-752e-4264-9b7d-ea7566ab7b0a)
+
 3. Tantos hilos como el doble de núcleos de procesamiento.
-4. 50 hilos.
-5. 100 hilos.
+   	![image](https://github.com/user-attachments/assets/a92d8029-b279-48cd-9fc0-8871c91f0d3a)
+5. 50 hilos.
+   	
+   	![image](https://github.com/user-attachments/assets/789d8229-33f1-4917-956b-da9cc3ed43c1)
+
+
+7. 100 hilos.
+	![image](https://github.com/user-attachments/assets/428a6736-8107-4652-9bbc-b552db91b2c8)
 
 Al iniciar el programa ejecute el monitor jVisualVM, y a medida que corran las pruebas, revise y anote el consumo de CPU y de memoria en cada caso. ![](img/jvisualvm.png)
 
@@ -126,11 +142,17 @@ Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tie
 
 1. Según la [ley de Amdahls](https://www.pugetsystems.com/labs/articles/Estimating-CPU-Performance-using-Amdahls-Law-619/#WhatisAmdahlsLaw?):
 
-	![](img/ahmdahls.png), donde _S(n)_ es el mejoramiento teórico del desempeño, _P_ la fracción paralelizable del algoritmo, y _n_ el número de hilos, a mayor _n_, mayor debería ser dicha mejora. Por qué el mejor desempeño no se logra con los 500 hilos?, cómo se compara este desempeño cuando se usan 200?. 
+	![](img/ahmdahls.png), donde _S(n)_ es el mejoramiento teórico del desempeño, _P_ la fracción paralelizable del algoritmo, y _n_ el número de hilos, a mayor _n_, mayor debería ser dicha mejora. Por qué el mejor desempeño no se logra con los 500 hilos?, cómo se compara este desempeño cuando se usan 200?.
+
+	Se logra un mejor desempeño al tener en cuenta que nuestro valor dado de P es aproximadamente 0.20, en este caso el valor de S cambia con respecto a los 200 y a los 500 de manera que con 200 el valor de S es 1.24844, mientras que con 500 hilos este valor es de 1.24938, que aun asi sigue siendo un mejor desempeño, pero aun asi es casi imperceptible
 
 2. Cómo se comporta la solución usando tantos hilos de procesamiento como núcleos comparado con el resultado de usar el doble de éste?.
 
+    Al usar 16 hilos que es la misma cantidad de núcleos nos da un valor de 1.2719, al usar 32 hilos, que es el doble, nos da un valor de 1.2839 lo que nos muestra una mayor eficiencia del programa.
+
 3. De acuerdo con lo anterior, si para este problema en lugar de 100 hilos en una sola CPU se pudiera usar 1 hilo en cada una de 100 máquinas hipotéticas, la ley de Amdahls se aplicaría mejor?. Si en lugar de esto se usaran c hilos en 100/c máquinas distribuidas (siendo c es el número de núcleos de dichas máquinas), se mejoraría?. Explique su respuesta.
+
+   El resultado, hipoteticamente hablando seria el mismo, teniendo en cuenta que cada maquina tiene una cantidad de nucleos de procesamiento completamente independientes a las otras maquinas, se podria obtener mayor cantidad de hilos por maquina, y asi mismo ser mas eficientes al obtener un resultado con respecto al proceso.
 
 
 
